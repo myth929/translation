@@ -63,9 +63,11 @@ await act(async () => {
 ```
 这会解决你之前不能使用`act()`所剩下的case，列如在一个异步函数中进行状态更新。现在，你应该修复你测试中所有剩下的`act()`warning。
 
+我们听说没有足够的信息关于如何用`act()`写测试。新的[测试方法](https://reactjs.org/docs/testing-recipes.html)增加普通场景下的引导描述，以及帮助你通过`act()`写好的测试。这些例子使用vanilla DOM APIs，但是你同样可以使用[React Testing Library](https://testing-library.com/docs/react-testing-library/intro)去简化引用代码。多数方法都已经在内部使用`act()`。
 
+你可以在[on the issue tracker](https://github.com/facebook/react/issues)上提出你遇到的任何问题。
 
-
+#### 性能测量：<Raect.Profiler>
 
 
 
