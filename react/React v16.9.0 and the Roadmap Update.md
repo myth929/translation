@@ -67,9 +67,30 @@ await act(async () => {
 
 你可以在[on the issue tracker](https://github.com/facebook/react/issues)上提出你遇到的任何问题。
 
-#### 性能测量：<Raect.Profiler>
+### 性能测量：<Raect.Profiler>
 
+在React 16.5中，我门介绍了一个新的可以帮助发现应用性能瓶颈的方法[React Profiler for DevTools](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)。**在React 16.9 中，我们也添加了一个正式的方法去统计测量`<React.Profiler>`。**我们预计在小型项目中一般不会使用，但是在大型项目中使用较为方便的。
 
+`<Profiler>`可以被添加在React tree的任何地方，以此测量包含部分的rendering成本。它需要传两个props`id`(string)和当tree ‘提交’时回调的方法[`onRender` callback](https://reactjs.org/docs/profiler.html#onrender-callback) (function)。
+
+``` javascript
+render(
+  <Profiler id="application" onRender={onRenderCallback}>
+    <App>
+      <Navigation {...props} />
+      <Main {...props} />
+    </App>
+  </Profiler>
+);
+```
+
+`Profiler`详细文档 [the `Profiler` docs](https://reactjs.org/docs/profiler.html)
+
+##### 注：
+
+Profiling会增加额外的成本，所以在**[the production build](https://reactjs.org/docs/optimizing-performance.html#use-the-production-build)**中会禁用。
+
+如果想测试production，React提供了一个额外的特殊production build包含可以使用的profiling。具体见[fb.me/react-profiling](https://fb.me/react-profiling).
 
 
 
